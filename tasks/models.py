@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 # Create your models here.
 class Collection(models.Model):
@@ -28,11 +29,14 @@ class Collection(models.Model):
 
     @classmethod
     def get_default_collection(cls):
-        collection, _ = cls.objects.get_or_create(name="Default", slug="_default", defaults={'name': 'Default', 'slug': '_default'})
+        collection, _ = cls.objects.get_or_create(name="Default", slug="_default")
         return collection
 
     def __str__(self):
         return self.name
+    def save(self, *args, **kwargs):
+        self.slug = self.slug or slugify(self.name)
+        return super().save(*args, **kwargs)
 
     class Meta:
         ordering = ['name']
