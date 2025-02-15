@@ -10,7 +10,7 @@ def index(request):
     
     collection = Collection.get_default_collection()
     context['collections'] = Collection.objects.order_by("-slug")
-    context['tasks'] = Task.objects.order_by("description")
+    context['tasks'] = collection.task_set.order_by("description")
     return render(request, 'tasks/index.html', context=context)
   
 def add_collection(request):
