@@ -23,7 +23,7 @@ class Task(models.Model):
 
 # Create your models here.
 class Collection(models.Model):
-    name = models.CharField(max_length=60, unique=True)
+    name = models.CharField(max_length=65, unique=True)
     slug = models.SlugField(unique=True)
 
     @classmethod
