@@ -11,8 +11,9 @@
   <div id="collections">
     {%for collection in collections%}
         <button 
-         hx-get="get-tasks/1"
-         hx-trigger="click">
+         hx-target="#tasks"
+         hx-get="{% url 'get-tasks' collection.pk %}">
+         
          {{ collection.name }}
         </button>
     {% endfor %}
