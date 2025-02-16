@@ -36,9 +36,7 @@
 </form>
 
 <div id="tasks">
-  {% for task in tasks %}
-      <p>{{ task.description }}</p>
-  {% endfor %}
+
 </div>
 <script>
   document.body.addEventListener('htmx:responseError', (evt) => {
