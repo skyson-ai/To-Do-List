@@ -38,4 +38,5 @@ def add_task(request):
 def get_tasks(request, Collection_pk):
     collection = get_object_or_404(Collection, pk=Collection_pk)
     tasks = collection.tasks.order_by("description")
-    return render(request, 'tasks/tasks.html', context={'tasks': tasks})
+    return render(request, "tasks/tasks.html")
+    return HttpResponse("<br>".join(task.description for task in tasks))
