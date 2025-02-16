@@ -10,7 +10,11 @@
   <h1> Doc List</h1>
   <div id="collections">
     {%for collection in collections%}
-        <h2>{{ collection.name }}</h2>
+        <button 
+         hx-get="get-tasks/1"
+         hx-trigger="click">
+         {{ collection.name }}
+        </button>
     {% endfor %}
   </div>
 <form method="POST" >
