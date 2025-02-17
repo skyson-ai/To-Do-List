@@ -17,7 +17,7 @@ def index(request):
 
     context['collections'] = Collection.objects.order_by("-slug")
     tasks = collection.tasks.order_by("description") 
-    context['tasks'] = render_to_string("tasks/tasks.html", {"tasks": tasks})
+   
     return render(request, 'tasks/index.html', context=context)
   
 def add_collection(request):

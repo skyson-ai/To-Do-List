@@ -19,6 +19,6 @@
 []ajouter une tache
 []supprimer les taches d'une collection
 []modifier une tache
-[]afficher les taches d'une collection
+[x]afficher les taches d'une collection
 
 
