@@ -4,6 +4,7 @@ from tasks.models import Collection, Task
 from django.utils.html import escape
 from django.utils.text import slugify
 from django.contrib import messages
+from django.template.loader import render_to_string
 
 # Create your views here.
 def index(request):
@@ -15,7 +16,8 @@ def index(request):
         collection = get_object_or_404(Collection, slug=collection_slug)
 
     context['collections'] = Collection.objects.order_by("-slug")
-    context['tasks'] = Task.objects.order_by("description")
+    tasks = collection.tasks.order_by("description") 
+    context['tasks'] = render_to_string("tasks/tasks.html", {"tasks": tasks})
     return render(request, 'tasks/index.html', context=context)
   
 def add_collection(request):
